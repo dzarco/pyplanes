@@ -45,6 +45,8 @@ def tick(keys):
 	if pygame.K_LEFT in keys:
 	    plane2.x -= 5
 
+	# Random generation of image of obstacles
+
 	# collisions
 		# collisions between planes
 		# collisions between object
