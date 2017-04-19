@@ -14,6 +14,11 @@ plane1 = gamebox.from_color(100,100,"blue",20,40)
 # Replace this to from_image
 plane2 = gamebox.from_color(200,200,"red",20,40)
 
+# Image of obstacles
+
+#ZOOM?
+
+
 def tick(keys):
 
 	camera.clear('cyan')
@@ -46,8 +51,11 @@ def tick(keys):
 		# colisions between floor and plane
 
 	# health of planes
+		# two hits to kill
+		# regenerate health after 30 seconds
 
-
+	# Death of Plane
+	# Score of Death
 	camera.draw(plane1)
 	camera.draw(plane2)
 
