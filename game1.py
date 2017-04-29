@@ -19,20 +19,21 @@ camera = gamebox.Camera(1300,700)
 p1_score = 100
 p2_score = 100
 
-plane1 = gamebox.from_image(200,100,"Basic_Plane_Small.png")
-plane2 = gamebox.from_image(200,600,"Basic_Plane_Small.png")
-# planet1 = gamebox.from_ima
+plane1 = gamebox.from_image(400,100,"Small_Space_Ship.png")
+plane2 = gamebox.from_image(400,600,"Small_Space_Ship.png")
 
 stars = []
 for y in range(0,1301,2):
 	stars.append(gamebox.from_color(random.randrange(0,1305),y,'white',2,2))
 
-# power_up = []
-# for y in range()
-
-asteroids = []
+asteroids_20 = []
 for y in range(0,1100,50):
-	asteroids.append(gamebox.from_color(random.randrange(200,1300),y,'red',10,10))
+	asteroids.append(gamebox.from_image(random.randrange(200,1300),y,"20_Space_Rock.png"))
+
+asteroids_50 = []
+for y in range(0,1100,50):
+	asteroids.append(gamebox.from_image(random.randrange(200,1300),y,"50_Space_Rock.png"))
+
 
 def tick(keys):
 	global p1_score
@@ -40,8 +41,8 @@ def tick(keys):
 
 	camera.clear('black')
 
-	plane1.x -= 2
-	plane2.x -= 2
+	plane1.x -= 3
+	plane2.x -= 3
 
 	# player 1
 	if pygame.K_w in keys:
@@ -65,7 +66,7 @@ def tick(keys):
 
 	# beam
 	if pygame.K_SPACE in keys:
-		plane2.x += 500
+		plane2.x += 100
 
 	for star in stars:
 		star.x -= 2
@@ -76,10 +77,10 @@ def tick(keys):
 
 	for asteroid in asteroids:
 		asteroid.x -= 10
-		if asteroid.left < 0:
-			asteroid.x = 1250
+		asteroid.rotate(10)
+		if asteroid.left < -100:
+			asteroid.x = 1350
 			asteroid.y = random.randrange(0,705)
-			asteroid.size = 10,10
 
 	for asteroid in asteroids:
 		if plane1.touches(asteroid):
