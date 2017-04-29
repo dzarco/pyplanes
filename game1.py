@@ -34,17 +34,7 @@ asteroids_50 = []
 for y in range(0,1100,50):
 	asteroids_50.append(gamebox.from_image(random.randrange(200,1300),y,"50_Space_Rock.png"))
 
-
-def tick(keys):
-	global p1_score
-	global p2_score
-
-	camera.clear('black')
-
-	plane1.x -= 3
-	plane2.x -= 3
-
-	# player 1
+def player_controls(keys):
 	if pygame.K_w in keys:
 	    plane1.y -= 5
 	if pygame.K_s in keys:
@@ -53,8 +43,6 @@ def tick(keys):
 	    plane1.x += 5
 	if pygame.K_a in keys:
 	    plane1.x -= 5
-
-	# player 2
 	if pygame.K_UP in keys:
 	    plane2.y -= 5
 	if pygame.K_DOWN in keys:
@@ -63,6 +51,16 @@ def tick(keys):
 	    plane2.x += 5
 	if pygame.K_LEFT in keys:
 	    plane2.x -= 5
+
+
+def tick(keys):
+	global p1_score
+	global p2_score
+	player_controls(keys)
+	camera.clear('black')
+
+	plane1.x -= 3
+	plane2.x -= 3
 
 	# beam
 	if pygame.K_SPACE in keys:
