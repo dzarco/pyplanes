@@ -28,11 +28,11 @@ for y in range(0,1301,2):
 
 asteroids_20 = []
 for y in range(0,1100,50):
-	asteroids.append(gamebox.from_image(random.randrange(200,1300),y,"20_Space_Rock.png"))
+	asteroids_20.append(gamebox.from_image(random.randrange(200,1300),y,"20_Space_Rock.png"))
 
 asteroids_50 = []
 for y in range(0,1100,50):
-	asteroids.append(gamebox.from_image(random.randrange(200,1300),y,"50_Space_Rock.png"))
+	asteroids_50.append(gamebox.from_image(random.randrange(200,1300),y,"50_Space_Rock.png"))
 
 
 def tick(keys):
@@ -75,14 +75,29 @@ def tick(keys):
 			star.y = random.randrange(0,1305)
 			star.size = 2,2
 
-	for asteroid in asteroids:
+	for asteroid in asteroids_20:
 		asteroid.x -= 10
 		asteroid.rotate(10)
 		if asteroid.left < -100:
 			asteroid.x = 1350
 			asteroid.y = random.randrange(0,705)
 
-	for asteroid in asteroids:
+	for asteroid in asteroids_20:
+		if plane1.touches(asteroid):
+			plane1.move_to_stop_overlapping(asteroid)
+			p1_score -= 1
+		if plane2.touches(asteroid):
+			plane2.move_to_stop_overlapping(asteroid)
+			p2_score -= 1
+
+	for asteroid in asteroids_50:
+		asteroid.x -= 10
+		asteroid.rotate(10)
+		if asteroid.left < -100:
+			asteroid.x = 1350
+			asteroid.y = random.randrange(0,705)
+
+	for asteroid in asteroids_50:
 		if plane1.touches(asteroid):
 			plane1.move_to_stop_overlapping(asteroid)
 			p1_score -= 1
@@ -98,7 +113,9 @@ def tick(keys):
 		camera.draw(gamebox.from_text(650, 100, str("Player 1 wins!"), "Arial", 40, "red", True))
 		gamebox.pause()
 
-	for asteroid in asteroids:
+	for asteroid in asteroids_20:
+		camera.draw(asteroid)
+	for asteroid in asteroids_50:
 		camera.draw(asteroid)
 	for star in stars:
 		camera.draw(star)
