@@ -28,6 +28,8 @@ p1_score = 100
 
 plane1 = gamebox.from_image(400,100,"Small_Space_Ship_35.png")
 
+title_png = gamebox.from_image(600,75,"Title_small.png")
+
 top_barrier = gamebox.from_color(650,-20,"red",1300,40)
 bottom_barrier = gamebox.from_color(650,720,"red",1300,40)
 
@@ -68,7 +70,7 @@ def tick(keys):
 		if pygame.K_UP in keys:
 			count -= 1
 			keys.clear()
-		title = gamebox.from_text(camera.x, camera.y - 250, "THIS IS A SHIT GAME", "Times New Roman", 50, "White", bold=True)
+		# title = gamebox.from_text(camera.x, camera.y - 250, "THIS IS A SHIT GAME", "Times New Roman", 50, "White", bold=True)
 		subtitle = gamebox.from_text(camera.x, camera.y - 200, "By Danial and Andrew", "Times New Roman", 20, "White")
 		start_white = gamebox.from_text(camera.x, camera.y - 100, "Start", "Times New Roman", 30, "White")
 		start_black = gamebox.from_text(camera.x, camera.y - 100, "Start", "Times New Roman", 30, "Black")
@@ -89,7 +91,7 @@ def tick(keys):
 			count = 0
 		if count == -1:
 			count = 2
-		camera.draw(title)
+		camera.draw(title_png)
 		camera.draw(subtitle)
 		camera.display()
 		if pygame.K_SPACE in keys and count == 1:
