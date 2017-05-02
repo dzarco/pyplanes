@@ -1,0 +1,5 @@
+1. The objective of the game is to fly the furthest away from Planet Sully
+2. The farther you get, the higher your score
+3. If your ship touches the asteroids, your ship takes damage
+4. Your only saviors are the Sully-droids which will will bring your slush fund back to 100%
+5. You die and the game ends when the slush fund gets to 0
